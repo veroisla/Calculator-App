@@ -1,7 +1,14 @@
 import React from 'react';
+import { useState } from 'react';
 import '../styles/App.scss';
 
 function App() {
+  const [cal, setCal] = useState('');
+  const [result, setResult] = useState('');
+
+  const ops = ['/', '*', '+', '-', '.'];
+
+  //FUNCTION CREATE DIGITS
   const createDigits = () => {
     const digits = [];
     for (let i = 1; i < 10; i++) {
@@ -19,7 +26,8 @@ function App() {
 
   return (
     <>
-      <div className="app">
+      <div className="container">
+        {' '}
         <div className="calculator">
           <div className="calculator__display">
             <span className="calculator__display--result">0</span>0
