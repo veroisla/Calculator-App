@@ -68,14 +68,15 @@ function App() {
         {' '}
         <div className="calculator">
           {/* RESULT  */}
-          <div className="calculator__display">
-            {result ? (
-              <span className="calculator__display--result"> {result}</span>
-            ) : (
-              ''
-            )}{' '}
-            &nbsp;
-            {calc || '0'}
+          <div className="calculator__resetAndResult">
+            <button
+              onClick={deleteAll}
+              className="calculator__button calculator__button--digits"
+            >
+              C
+            </button>
+
+            <div className="calculator__display">{calc || '0'}</div>
           </div>
 
           {/* OPERATORS */}
@@ -134,12 +135,6 @@ function App() {
               className="calculator__button calculator__button--digits"
             >
               =
-            </button>
-            <button
-              onClick={deleteAll}
-              className="calculator__button calculator__button--digits"
-            >
-              C
             </button>
           </div>
         </div>
