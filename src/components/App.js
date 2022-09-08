@@ -42,6 +42,20 @@ function App() {
     return digits;
   };
 
+  //FUNCTION CALCULATE TOTAL RESULT
+  const calculate = () => {
+    setCalc(eval(calc.toString()));
+  };
+
+  //FUNCTION DELETE LAST BUTTON
+  const deleteLast = () => {
+    if (calc === '') {
+      return;
+    }
+    const value = calc.slice(0, -1);
+    setCalc(value);
+  };
+
   return (
     <>
       <div className="container">
@@ -85,7 +99,10 @@ function App() {
               -
             </button>
 
-            <button className="calculator__button calculator__button--operators">
+            <button
+              onClick={deleteLast}
+              className="calculator__button calculator__button--operators"
+            >
               DEL
             </button>
           </div>
@@ -106,7 +123,10 @@ function App() {
               .
             </button>
 
-            <button className="calculator__button calculator__button--digits">
+            <button
+              onClick={calculate}
+              className="calculator__button calculator__button--digits"
+            >
               =
             </button>
           </div>
