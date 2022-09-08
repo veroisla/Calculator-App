@@ -3,10 +3,27 @@ import { useState } from 'react';
 import '../styles/App.scss';
 
 function App() {
-  const [cal, setCal] = useState('');
+  const [calc, setCalc] = useState('');
   const [result, setResult] = useState('');
 
   const ops = ['/', '*', '+', '-', '.'];
+
+  //FUNCTION UPDATE CALC
+  const updateCalc = (value) => {
+    //Prevent the use of operators
+    if (
+      (ops.includes(value) && calc === '') ||
+      (ops.includes(value) && ops.includes(calc.slice(-1)))
+    ) {
+      return;
+    }
+    setCalc(calc + value);
+
+    //Update results
+    if (!ops.includes(value)) {
+      setResult(eval(calc + value).toString());
+    }
+  };
 
   //FUNCTION CREATE DIGITS
   const createDigits = () => {
@@ -14,6 +31,7 @@ function App() {
     for (let i = 1; i < 10; i++) {
       digits.push(
         <button
+          onClick={() => updateCalc(i.toString())}
           key={i}
           className="calculator__button calculator__button--digits"
         >
@@ -29,22 +47,41 @@ function App() {
       <div className="container">
         {' '}
         <div className="calculator">
+          {/* RESULT  */}
           <div className="calculator__display">
-            <span className="calculator__display--result">0</span>0
+            {result ? (
+              <span className="calculator__display--result"> {result}</span>
+            ) : (
+              ''
+            )}{' '}
+            &nbsp;
+            {calc || '0'}
           </div>
 
           {/* OPERATORS */}
           <div className="calculator__operators">
-            <button className="calculator__button calculator__button--operators">
+            <button
+              onClick={() => updateCalc('/')}
+              className="calculator__button calculator__button--operators"
+            >
               /
             </button>
-            <button className="calculator__button calculator__button--operators">
+            <button
+              onClick={() => updateCalc('*')}
+              className="calculator__button calculator__button--operators"
+            >
               *
             </button>
-            <button className="calculator__button calculator__button--operators">
+            <button
+              onClick={() => updateCalc('+')}
+              className="calculator__button calculator__button--operators"
+            >
               +
             </button>
-            <button className="calculator__button calculator__button--operators">
+            <button
+              onClick={() => updateCalc('-')}
+              className="calculator__button calculator__button--operators"
+            >
               -
             </button>
 
@@ -56,12 +93,19 @@ function App() {
           {/* DIGITS */}
           <div className="calculator__digits">
             {createDigits()}
-            <button className="calculator__button calculator__button--digits">
+            <button
+              onClick={() => updateCalc('0')}
+              className="calculator__button calculator__button--digits"
+            >
               0
             </button>
-            <button className="calculator__button calculator__button--digits">
+            <button
+              onClick={() => updateCalc('.')}
+              className="calculator__button calculator__button--digits"
+            >
               .
             </button>
+
             <button className="calculator__button calculator__button--digits">
               =
             </button>
