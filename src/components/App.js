@@ -56,6 +56,12 @@ function App() {
     setCalc(value);
   };
 
+  //FUNCTION DELETE ALL
+  const deleteAll = () => {
+    setCalc('');
+    setResult('');
+  };
+
   return (
     <>
       <div className="container">
@@ -128,6 +134,12 @@ function App() {
               className="calculator__button calculator__button--digits"
             >
               =
+            </button>
+            <button
+              onClick={deleteAll}
+              className="calculator__button calculator__button--digits"
+            >
+              C
             </button>
           </div>
         </div>
