@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/components/Calculator.scss';
 
 function Calculator(props) {
   return (
@@ -9,7 +10,7 @@ function Calculator(props) {
         <div className="calculator__resetAndResult">
           <button
             onClick={props.deleteAll}
-            className="calculator__button calculator__button--digits"
+            className="calculator__button calculator__button--digits calculator__button--clear"
           >
             C
           </button>

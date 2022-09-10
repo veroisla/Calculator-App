@@ -1,10 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 
-import '../styles/components/App.scss';
-
 import Header from '../components/Header';
 import Calculator from './Calculator';
+import Footer from '../components/Footer';
 
 function App() {
   const [calc, setCalc] = useState('');
@@ -78,6 +77,7 @@ function App() {
         deleteLast={deleteLast}
         deleteAll={deleteAll}
       />
+      <Footer />
     </>
   );
 }

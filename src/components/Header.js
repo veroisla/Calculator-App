@@ -5,8 +5,14 @@ import INNOCV from '../images/innocv-header.png';
 function Header() {
   return (
     <header className="header">
-      <img className="header__logo" src={INNOCV} alt="innocv logo header" />
-      <h1 className="header__title">calculadora</h1>
+      <a
+        href="https://www.innocv.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {' '}
+        <img className="header__logo" src={INNOCV} alt="innocv logo header" />
+      </a>
     </header>
   );
 }
