@@ -1,6 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-import '../styles/App.scss';
+
+import '../styles/components/App.scss';
+
+import Header from '../components/Header';
+import Calculator from './Calculator';
 
 function App() {
   const [calc, setCalc] = useState('');
@@ -64,81 +68,16 @@ function App() {
 
   return (
     <>
-      <div className="container">
-        {' '}
-        <div className="calculator">
-          {/* RESULT  */}
-          <div className="calculator__resetAndResult">
-            <button
-              onClick={deleteAll}
-              className="calculator__button calculator__button--digits"
-            >
-              C
-            </button>
-
-            <div className="calculator__display">{calc || '0'}</div>
-          </div>
-
-          {/* OPERATORS */}
-          <div className="calculator__operators">
-            <button
-              onClick={() => updateCalc('/')}
-              className="calculator__button calculator__button--operators"
-            >
-              /
-            </button>
-            <button
-              onClick={() => updateCalc('*')}
-              className="calculator__button calculator__button--operators"
-            >
-              *
-            </button>
-            <button
-              onClick={() => updateCalc('+')}
-              className="calculator__button calculator__button--operators"
-            >
-              +
-            </button>
-            <button
-              onClick={() => updateCalc('-')}
-              className="calculator__button calculator__button--operators"
-            >
-              -
-            </button>
-
-            <button
-              onClick={deleteLast}
-              className="calculator__button calculator__button--operators"
-            >
-              DEL
-            </button>
-          </div>
-
-          {/* DIGITS */}
-          <div className="calculator__digits">
-            {createDigits()}
-            <button
-              onClick={() => updateCalc('0')}
-              className="calculator__button calculator__button--digits"
-            >
-              0
-            </button>
-            <button
-              onClick={() => updateCalc('.')}
-              className="calculator__button calculator__button--digits"
-            >
-              .
-            </button>
-
-            <button
-              onClick={calculate}
-              className="calculator__button calculator__button--digits"
-            >
-              =
-            </button>
-          </div>
-        </div>
-      </div>
+      <Header />
+      <Calculator
+        calc={calc}
+        result={result}
+        updateCalc={updateCalc}
+        createDigits={createDigits}
+        calculate={calculate}
+        deleteLast={deleteLast}
+        deleteAll={deleteAll}
+      />
     </>
   );
 }
