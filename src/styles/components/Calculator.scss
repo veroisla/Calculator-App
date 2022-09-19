@@ -55,10 +55,6 @@ margin: 0 30px 0 30px;
     padding: 16px;
     cursor: pointer;
     transition: 0.4s;
-  
-    &:hover {
-        opacity: 0.9;
-    }
    }
 
     &__operators {
@@ -79,6 +75,10 @@ margin: 0 30px 0 30px;
     font-weight: bolder;
     margin: 5px;
     border-radius: 5px;
+
+    &:hover {
+        background-color: $--color-hover-pink;
+    }
    }
 
    
@@ -101,12 +101,21 @@ margin: 0 30px 0 30px;
     font-weight: bolder;
     margin: 5px;
     border-radius: 5px;
+
+    &:hover {
+        box-shadow: 5px 5px 5px $--color-ligth-grey;
+    }
    }
 
     &__button--clear {
     background-color: $--color-purple;
     color: $--color-white;
     height: 60px;
+
+    &:hover {
+        background-color: $--color-hover-purple;
+        box-shadow: none;
+    }
    }
 }
 
